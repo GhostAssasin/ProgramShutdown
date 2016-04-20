@@ -25,6 +25,10 @@
   <property name="windowTitle">
    <string>ProgramShutdown</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="application.qrc">
+    <normaloff>:/switch_off.png</normaloff>:/switch_off.png</iconset>
+  </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
@@ -188,19 +192,6 @@
          <string>Refresh</string>
         </property>
        </widget>
-       <widget class="QLabel" name="label_4">
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>160</y>
-          <width>241</width>
-          <height>41</height>
-         </rect>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
       </widget>
       <widget class="QWidget" name="tab_2">
        <attribute name="title">
@@ -310,6 +301,8 @@
   <widget class="QStatusBar" name="statusBar"/>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="application.qrc"/>
+ </resources>
  <connections/>
 </ui>

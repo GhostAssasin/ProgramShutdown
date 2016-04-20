@@ -1,0 +1,6 @@
+<!DOCTYPE RCC><RCC version="1.0">
+ <qresource>
+     <file>getAllUsersProgram.sh</file>
+     <file>switch_off.png</file>
+ </qresource>
+ </RCC>

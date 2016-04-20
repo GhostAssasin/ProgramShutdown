@@ -22,10 +22,11 @@ MainWindow::MainWindow(QWidget *parent) :
         ui->label_10->setStyleSheet("font: 11pt");
         ui->tabWidget->setTabText(0,"Action");
         ui->tabWidget->setTabText(1,"Info");
-        QPixmap myPixmap( "switch_off.png" );
+        QPixmap myPixmap( ":/switch_off.png" );
         ui->label_5->setPixmap( myPixmap );
         refreshPr();
         QObject::connect(ui->pushButton_3, SIGNAL(clicked()), this, SLOT(refreshPr()) );
+        QObject::connect(this, SIGNAL(refresh()), this, SLOT(refreshPr()) );
         QObject::connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(startTim()) );
         tmr = new QTimer();
         tmr->setInterval(1000);
@@ -49,9 +50,9 @@ void MainWindow::updateTime()
 
     }else{
         QString command="kill $(pgrep "+ui->comboBox->currentText()+")";
-        ui->label_4->setText(ui->comboBox->currentText());
         system(qPrintable(command));
         emit stopT();
+        emit refresh();
     }
 
 }
@@ -62,7 +63,8 @@ void MainWindow::refreshPr()
         {
             ui->comboBox->removeItem(i);
         }
-    system("./getAllUsersProgram.sh");
+    QFile::copy(":/getAllUsersProgram.sh", "/tmp/getAllUsersProgram.sh");
+    system("cd /tmp && chmod +x getAllUsersProgram.sh && ./getAllUsersProgram.sh");
     QFile file("/tmp/listFinal.txt");
     if(file.open(QIODevice::ReadOnly |QIODevice::Text))
        {

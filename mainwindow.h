@@ -22,6 +22,7 @@ private:
 signals:
     void startT();
     void stopT();
+    void refresh();
 public slots:
     void updateTime();
     void refreshPr();
